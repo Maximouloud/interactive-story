@@ -9,7 +9,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        return response()->json(Chapter::all());
+        return response()->json(Chapter::with('choices')->get());
     }
 
     public function show(Chapter $chapter)

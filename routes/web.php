@@ -24,4 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/stories', function () {
+        return Inertia::render('Stories');
+    })->name('stories');
+
+    Route::get('/stories/{id}', function ($id) {
+        return Inertia::render('StoryDetail', ['id' => $id]);
+    })->name('story.show');
+});
 require __DIR__.'/auth.php';
