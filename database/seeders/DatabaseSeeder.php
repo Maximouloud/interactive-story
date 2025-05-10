@@ -24,5 +24,9 @@ class DatabaseSeeder extends Seeder
             ChapterSeeder::class,
             ChoiceSeeder::class,
         ]);
+
+        $this->call(StorySeeder::class);
+
+
     }
 }

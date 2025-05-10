@@ -39,7 +39,9 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Dashboard
                                 </NavLink>
-                                <Link :href="route('stories')" class="text-sm text-gray-700 dark:text-gray-500 underline">Voir les histoires</Link>
+                                <Link :href="route('stories')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+    Voir les histoires
+</Link>
 
                             </div>
                         </div>

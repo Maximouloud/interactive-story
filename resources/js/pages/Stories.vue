@@ -6,9 +6,9 @@
             <li v-for="story in stories" :key="story.id" class="mb-2">
                 <h2 class="text-lg font-semibold">{{ story.title }}</h2>
                 <p class="text-gray-600">{{ story.description }}</p>
-                <Link :href="`/stories/${story.id}`" class="text-blue-500 underline">
-                    Voir l’histoire
-                </Link>
+                <Link :href="route('story.show', story.id)" class="text-blue-500 underline">
+    Voir l’histoire
+</Link>
             </li>
         </ul>
 
@@ -25,7 +25,8 @@ const stories = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await axios.get('/api/v1/stories');
+        const response = await axios.get(`http://127.0.0.1:8000/api/v1/stories/${props.id}`);
+        console.log(response.data);
         stories.value = response.data;
     } catch (error) {
         console.error('Erreur lors de la récupération des histoires:', error);

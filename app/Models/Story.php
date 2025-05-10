@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Story extends Model
 {
-    //
+    public function chapters()
+{
+    return $this->hasMany(\App\Models\Chapter::class);
+}
+
 }

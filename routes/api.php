@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\StoryController;
 use App\Http\Controllers\Api\V1\ChapterController;
 use App\Http\Controllers\Api\V1\ChoiceController;
+
 
 Route::prefix('v1')->group(function () {
     Route::get('/test', function () {
@@ -16,7 +18,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/time', function () {
         $timeClient = request()->input('timeClient', 0);
         sleep(2); // Simulate a long-running process
-        return response()->json(['timeClient' => $timeClient, 'timeServer' => now()]);
+        return response()->json(['timeClient' => $timeClient, 'timeServer' => now() ]);
     });
 
     Route::apiResource('stories', StoryController::class);
