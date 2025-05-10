@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function () {
         sleep(2); // Simulate a long-running process
         return response()->json(['timeClient' => $timeClient, 'timeServer' => now() ]);
     });
+    
 
     Route::apiResource('stories', StoryController::class);
     Route::apiResource('chapters', ChapterController::class);

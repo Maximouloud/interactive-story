@@ -21,13 +21,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex shrink-0 items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
-                                </Link>
-                            </div>
+                            
 
                             <!-- Navigation Links -->
                             <div
@@ -37,11 +31,9 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    Dashboard
+                                    Accueil
                                 </NavLink>
-                                <Link :href="route('stories')" class="text-sm text-gray-700 dark:text-gray-500 underline">
-    Voir les histoires
-</Link>
+                                
 
                             </div>
                         </div>

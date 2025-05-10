@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function currentChapter()
+{
+    return $this->belongsTo(Chapter::class);
+}
+
 }

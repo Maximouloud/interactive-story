@@ -6,9 +6,7 @@
             <li v-for="story in stories" :key="story.id" class="mb-2">
                 <h2 class="text-lg font-semibold">{{ story.title }}</h2>
                 <p class="text-gray-600">{{ story.description }}</p>
-                <Link :href="route('story.show', story.id)" class="text-blue-500 underline">
-    Voir l’histoire
-</Link>
+                
             </li>
         </ul>
 

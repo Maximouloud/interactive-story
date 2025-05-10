@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Story;
 use Inertia\Inertia;
 
@@ -30,12 +31,28 @@ Route::middleware('auth')->group(function () {
 
     // Affichage de l’histoire et de ses chapitres/choix
     Route::get('/stories/{id}', function ($id) {
-        $story = Story::with('chapters.choices')->findOrFail($id);
-        return Inertia::render('StoryDetail', [
-            'story' => $story
-        ]);
-    })->name('story.show');
+    $story = Story::with('chapters.choices')->findOrFail($id);
+    $user = Auth::user();
+    $chapterToLoad = $user->current_chapter_id
+        ? $story->chapters->firstWhere('id', $user->current_chapter_id)
+        : $story->chapters->first();
+
+    return Inertia::render('StoryDetail', [
+        'story' => $story,
+        'startingChapterId' => $chapterToLoad->id,
+    ]);
+})->middleware(['auth'])->name('story.show');
 });
+
+//syttème pour sauvegarde du chapitre actuel
+Route::post('/save-progress', function () {
+    $user = Auth::user();
+    $chapterId = request('chapter_id');
+    $user->current_chapter_id = $chapterId;
+    $user->save();
+
+    return response()->json(['ok' => true]);
+})->middleware('auth');
 
 require __DIR__.'/auth.php';
 
