@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('chapters', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id();
+    $table->foreignId('story_id')->constrained()->onDelete('cascade');
+    $table->text('content');
+    $table->timestamps();
+});
     }
 
     /**

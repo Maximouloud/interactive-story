@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('choices', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id();
+    $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
+    $table->string('text'); // texte du choix affiché au joueur
+    $table->foreignId('next_chapter_id')->nullable()->constrained('chapters')->onDelete('set null');
+    $table->timestamps();
+});
+
     }
 
     /**
