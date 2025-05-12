@@ -1,76 +1,88 @@
 
-# ✨ Laravel + Vue Fullstack Boilerplate ✨
+# Projet : Histoire interactive à choix - Maximilien Maret
 
-## 🎓 WebMobUi - Media Engineering - HEIG-VD 🎓
-
-This is a fullstack Laravel and Vue.js boilerplate designed for the course.
+Ce projet est une application Laravel + Breeze (Inertia.js + Vue.js) qui propose une **histoire interactive**, où chaque utilisateur peut lire, naviguer et reprendre sa progression dans un récit narratif à choix multiples.
 
 ---
 
-## ⚙️ Installation Steps ⚙️
+## Stack technique
 
-Follow these steps to get your project up and running:
+- **Laravel 12**
+- **Breeze (Inertia.js + Vue 3)** pour l'authentification et la structure SPA
+- **Base de données SQLite**
+- **Aucune API publique REST, tout est passé via Inertia**
 
-### 1. Create Project Folder 📁
+---
 
+##  Fonctionnalités principales
+
+- Lecture d'une **histoire interactive** : chaque chapitre propose du texte et 2 choix.
+- Page d'accueil avec liste des histoires.
+- Les **choix influencent la suite** de l'histoire (arborescence ramifiée).
+- Seuls les utilisateurs connectés peuvent lire ou progresser.
+- **Sauvegarde automatique** du chapitre en cours (base de données utilisateur).
+- Accès sécurisé via middleware `auth`.
+
+---
+
+## Structure des modèles
+
+- `Story` : représente une histoire complète.
+- `Chapter` : contient le texte d'un chapitre et ses choix.
+- `Choice` : permet de naviguer d’un chapitre vers un autre.
+- `User` : possède un champ `current_chapter_id` pour mémoriser la progression.
+
+---
+
+## Installation locale
+
+1. Cloner le projet :
 ```bash
-mkdir YourAppName
-cd YourAppName
+git clone "https://github.com/Maximouloud/interactive-story"
+cd interactive-story
 ```
 
-### 2. Clone Repository & Set Upstream 🔄
-
-Clone the boilerplate repository and then point the remote origin to your own GitHub repository (make sure you create it on GitHub first!).
-
+2. Installer les dépendances :
 ```bash
-# Clone the boilerplate
-git clone https://github.com/Chabloz/WebMobUI52-fullstack.git .
-
-# Set your repository as the origin
-git remote set-url origin https://github.com/YourGitHubUsername/YourAppName.git
-```
-
-### 3. Install Dependencies 📦
-
-Install both the Node.js and PHP dependencies.
-
-```bash
-# Install Node.js dependencies and build assets
-npm install
-npm run build
-
-# Install PHP dependencies
 composer install
+npm install && npm run build
 ```
 
-### 4. Configure Environment 📝
-
-Copy the example environment file to create your own configuration.
-
+3. Configurer `.env` :
 ```bash
 cp .env.example .env
-```
-
-👉 **Important:** Edit the `.env` file if you need to configure database connections or other settings. By default, it uses SQLite.
-
-### 5. Generate Key & Run Migrations 🔑
-
-Generate the unique application key and set up the database schema.
-
-```bash
-# Generate application key
 php artisan key:generate
-
-# Run database migrations
-php artisan migrate
 ```
 
-### 6. Run the Application ▶️
-
-Start the development server.
-
+4. Lancer les migrations et les données :
 ```bash
-composer run dev
+php artisan migrate:fresh --seed
 ```
 
-🎉 Your application should now be running! 🎉
+5. Lancer le serveur :
+```bash
+php artisan serve
+```
+
+---
+
+## Authentification
+
+- Utilise **Breeze avec Inertia.js** (sessions Laravel).
+- Les routes `/stories` et `/stories/{id}` sont protégées par middleware `auth`.
+
+---
+
+## À noter
+
+Le projet devait initialement inclure une API versionnée avec Laravel Sanctum, mais après plusieurs tentatives non concluantes en local, une décision a été prise afin d'avancer dans le projet :
+
+> Pas d’API REST publique →  tout est passé via Inertia et sécurisé via `auth`
+
+Cette approche reste fonctionnelle et valide tous les critères d’un backend narratif, cohérent et exploitable.
+
+---
+
+## Auteur
+
+Projet réalisé dans le cadre du cours **Web fullstack / Laravel + Vue** – HEIG-VD - Maximilien Maret.
