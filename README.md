@@ -79,7 +79,7 @@ Le projet devait initialement inclure une API versionnée avec Laravel Sanctum, 
 
 > Pas d’API REST publique →  tout est passé via Inertia et sécurisé via `auth`
 
-Cette approche reste fonctionnelle et valide tous les critères d’un backend narratif, cohérent et exploitable.
+Cette approche reste fonctionnelle mais pas la version idéale prévue initialement.
 
 ---
 

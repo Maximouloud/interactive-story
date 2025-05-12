@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({ story: Object });
 
@@ -16,8 +17,21 @@ function goToChapter(id) {
   <div class="p-6 max-w-2xl mx-auto">
     <h1 class="text-2xl font-bold mb-4">{{ story.title }}</h1>
 
+    <!-- Bouton retour -->
+    <div class="mb-4">
+  <Link
+    href="/dashboard"
+    class="inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm rounded text-black"
+  >
+    Retour vers l'accueil
+  </Link>
+</div>
+
+    <!-- Chapitre actuel -->
     <div v-if="currentChapter">
       <p class="mb-4">{{ currentChapter.content }}</p>
+
+      <!-- Choices -->
       <div v-if="currentChapter.choices.length">
         <button
           v-for="choice in currentChapter.choices"
