@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Choice extends Model
 {
-    protected $fillable = ['chapter_id', 'text', 'next_chapter_id'];
+    protected $fillable = ['chapter_id', 'label', 'leads_to_chapter_id'];
+
 
     public function chapter()
     {

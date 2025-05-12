@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
-    protected $fillable = ['story_id', 'content'];
+    protected $fillable = ['story_id', 'title', 'content'];
 
     public function story()
     {
@@ -17,5 +17,6 @@ class Chapter extends Model
     {
         return $this->hasMany(Choice::class);
     }
+    
 }
 
