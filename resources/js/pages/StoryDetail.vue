@@ -54,11 +54,10 @@ onMounted(() => {
 
       <!-- Image de couverture -->
       <img
-        v-if="story.image_url"
-        :src="story.image_url"
-        alt="Image de l’histoire"
-        class="w-full h-64 object-cover"
-      />
+  src="/images/histoire-1-img.jpg"
+  alt="Image de l’histoire"
+  class="w-full h-64 object-cover"
+/>
 
       <div class="p-6">
         <!-- Titre -->
