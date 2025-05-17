@@ -74,38 +74,49 @@ onMounted(() => {
           </Link>
         </div>
 
-        <!-- Chapitre actuel -->
-        <div v-if="currentChapter">
-          <p class="text-lg leading-relaxed text-gray-800 mb-8">
-            {{ currentChapter.content }}
-          </p>
-
-          <!-- Choix -->
-          <div v-if="currentChapter.choices.length" class="space-y-4">
-            <button
-              v-for="choice in currentChapter.choices"
-              :key="choice.id"
-              @click="goToChapter(choice.next_chapter_id)"
-              class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-lg font-medium transition"
-            >
-              {{ choice.text }}
-            </button>
-          </div>
-
-          <!-- Fin de l'histoire -->
-          <div v-else class="text-center mt-10">
-            <p class="text-green-700 font-semibold text-lg mb-4">
-              Fin de l’histoire, on espère qu’elle vous a plu !
+        <!-- Transition de chapitre -->
+        <Transition name="fade" mode="out-in">
+          <div :key="currentChapter?.id" v-if="currentChapter">
+            <p class="text-lg leading-relaxed text-gray-800 mb-8">
+              {{ currentChapter.content }}
             </p>
-            <button
-              @click="restartStory"
-              class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-sm"
-            >
-              Recommencer l’histoire
-            </button>
+
+            <!-- Choix -->
+            <div v-if="currentChapter.choices.length" class="space-y-4">
+              <button
+                v-for="choice in currentChapter.choices"
+                :key="choice.id"
+                @click="goToChapter(choice.next_chapter_id)"
+                class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-lg font-medium transition"
+              >
+                {{ choice.text }}
+              </button>
+            </div>
+
+            <!-- Fin de l'histoire -->
+            <div v-else class="text-center mt-10">
+              <p class="text-green-700 font-semibold text-lg mb-4">
+                Fin de l’histoire, on espère qu’elle vous a plu !
+              </p>
+              <button
+                @click="restartStory"
+                class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-sm"
+              >
+                🔁 Recommencer l’histoire
+              </button>
+            </div>
           </div>
-        </div>
+        </Transition>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>
