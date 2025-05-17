@@ -17,7 +17,7 @@ const stories = [
         <template #header>
             <div class="flex items-center justify-between">
                 <h2 class="text-2xl font-bold text-indigo-700">Découvre nos histoire intéractives</h2>
-                <!-- Tu peux ajouter ici un petit logo custom si tu veux -->
+                
                 <span class="text-sm text-blue-500 italic">Explore, choisis, vis tes histoires</span>
             </div>
         </template>
@@ -28,13 +28,13 @@ const stories = [
                 <!-- Message de bienvenue -->
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 text-lg">
-                        🎉 Tu es connecté·e ! Prêt·e à plonger dans une nouvelle aventure ?
+                        Tu es connecté·e ! Prêt·e à plonger dans une nouvelle aventure ?
                     </div>
                 </div>
 
                 <!-- Bibliothèque d’histoires -->
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">📚 Histoires disponibles</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4"> Nos histoires disponibles</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <Link
                             v-for="story in stories"
