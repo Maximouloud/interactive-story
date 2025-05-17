@@ -73,6 +73,18 @@ php artisan serve
 
 ---
 
+## 🎨 Fonctionnalités frontend
+
+- Interface **responsive** adaptée aux mobiles et desktop
+- Affichage clair et conditionnel des chapitres et des choix
+- Transitions animées entre les chapitres
+- Ajout d'une **image de couverture** personnalisable pour chaque histoire
+- Fin d’histoire avec message de conclusion + **bouton “Recommencer”**
+- Sauvegarde de progression dans `localStorage` pour revenir automatiquement à son chapitre
+- Architecture **SPA complète** : aucune recharge de page
+
+---
+
 ## À noter
 
 Le projet devait initialement inclure une API versionnée avec Laravel Sanctum, mais après plusieurs tentatives non concluantes en local, une décision a été prise afin d'avancer dans le projet :
